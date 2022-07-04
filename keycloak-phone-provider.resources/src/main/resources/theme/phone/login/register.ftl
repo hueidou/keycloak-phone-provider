@@ -3,13 +3,9 @@
     <#if section = "header">
         ${msg("registerTitle")}
     <#elseif section = "form">
-        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
         <div id="vue-app">
         <form id="kc-register-form" class="${properties.kcFormClass!}" action="${url.registrationAction}" method="post">
-
-
 
             <#if !registrationLeast??>
                 <div class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('firstName',properties.kcFormGroupErrorClass!)}">
@@ -153,8 +149,8 @@
             <script type="text/javascript">
                 function req(phoneNumber) {
                     const params = {params: {phoneNumber}}
-                    axios.get(window.location.origin + '/auth/realms/${realm.name}/sms/registration-code', params)
-                        .then(res => app.disableSend(res.data.expiresIn))
+                    axios.get('${client.baseUrl}' + '../sms/registration-code', params)
+                        .then(res => app.disableSend(res.data.expires_in))
                         .catch(e => app.errorMessage = e.response.data.error);
                 }
 

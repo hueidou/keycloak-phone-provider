@@ -18,7 +18,7 @@ import org.keycloak.models.utils.FormMessage;
 import org.keycloak.protocol.oidc.OIDCLoginProtocol;
 import org.keycloak.provider.ProviderConfigProperty;
 import org.keycloak.services.messages.Messages;
-import org.keycloak.services.resources.AttributeFormDataProcessor;
+//import org.keycloak.services.resources.AttributeFormDataProcessor;
 import org.keycloak.services.validation.Validation;
 
 import javax.ws.rs.core.MultivaluedMap;
@@ -157,7 +157,7 @@ public class RegistrationPhoneAsUserNameCreation implements FormActionFactory, F
         user.setEnabled(true);
 
         context.getAuthenticationSession().setClientNote(OIDCLoginProtocol.LOGIN_HINT_PARAM, username);
-        AttributeFormDataProcessor.process(formData);
+        //AttributeFormDataProcessor.process(formData);
         context.setUser(user);
         context.getEvent().user(user);
         context.getEvent().success();
